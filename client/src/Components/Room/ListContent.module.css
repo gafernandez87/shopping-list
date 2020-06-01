@@ -1,0 +1,36 @@
+.container {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    overflow-y: auto;
+}
+
+.product {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.product .delete {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 25%;
+    background-color: red;
+    cursor: pointer;
+}
+.product img {
+    height: 18px;
+}
+
+.buttons {
+    width: 10%;
+    display: flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content: space-around;
+}
