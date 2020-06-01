@@ -14,7 +14,6 @@ import { useHistory } from "react-router-dom";
 // Styles
 import styles from "./Room.module.css";
 
-const ENDPOINT = "http://127.0.0.1:4001";
 let socket;
 
 const Room = () => {
@@ -24,7 +23,7 @@ const Room = () => {
   const history = useHistory();
 
   useEffect(() => {
-    socket = socketIOClient(ENDPOINT, {
+    socket = socketIOClient({
       query: { roomId: roomId },
     });
 

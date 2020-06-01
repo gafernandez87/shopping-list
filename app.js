@@ -6,6 +6,8 @@ const socketIo = require('socket.io');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const { PORT, MONGO_URI } = require('./utils/Constants');
+
 const routes = require('./routes/routes');
 
 const app = express();
@@ -28,10 +30,8 @@ const server = http.createServer(app);
 
 const io = socketIo(server);
 
-const port = process.env.PORT || 4001;
-
 // Database
-mongoose.connect('mongodb://127.0.0.1/shopping-list', { useNewUrlParser: true });
+mongoose.connect(MONGO_URI, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
@@ -61,6 +61,6 @@ io.on('connection', (socket) => {
 
 });
 
-server.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+server.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
 });
