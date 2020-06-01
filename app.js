@@ -44,17 +44,17 @@ io.on('connection', (socket) => {
 
   socket.on("addProduct", params => {
     RoomController.addProduct(params.roomId, params.product)
-      .then(room => socket.emit("room", room));
+      .then(room => io.emit("room", room));
   });
 
   socket.on("deleteProduct", params => {
     RoomController.deleteProduct(params.roomId, params.product)
-      .then(room => socket.emit("room", room));
+      .then(room => io.emit("room", room));
   });
 
   socket.on("toggleInCart", params => {
     RoomController.toggleInCart(params.roomId, params.product)
-      .then(room => socket.emit("room", room));
+      .then(room => io.emit("room", room));
   });
 
 });
