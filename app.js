@@ -11,17 +11,15 @@ const { PORT, MONGO_URI } = require('./utils/Constants');
 const routes = require('./routes/routes');
 
 const app = express();
-app.use(cors());
-
-app.use(bodyParser.json());
-app.use('/api', routes);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(bodyParser.json());
+app.use(cors());
+app.use('/api', routes);
 app.get('*', (_, res) => {
   res.sendFile(path.join(`${__dirname}/client/build/index.html`));
 });
-
 
 // Controllers
 const RoomController = require('./controllers/RoomController');
