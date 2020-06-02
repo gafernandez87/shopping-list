@@ -23,7 +23,7 @@ const Room = () => {
   const history = useHistory();
 
   useEffect(() => {
-    socket = socketIOClient("http://localhost:4001", {
+    socket = socketIOClient({
       query: { roomId: roomId },
     });
 
@@ -44,7 +44,7 @@ const Room = () => {
     const inCarCount = room.products.filter(product => product.inCart).length;
     return (
       <div className={styles.room}>
-        <Header title={`${room.name} (${inCarCount}/${room.products.length})`} handleBack={goHome} />
+        <Header title={room.name} counts={`${inCarCount}/${room.products.length}`} handleBack={goHome} />
         <NewProduct handleChange={e => setNewProduct(e.target.value)} addProduct={addProduct} newProductName={newProduct} />
         <ListContent products={room.products} handleDelete={deleteProduct} handleAddToCart={toggleInCart} />
       </div>

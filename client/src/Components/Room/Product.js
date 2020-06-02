@@ -11,12 +11,12 @@ const Product = ({ product, handleDelete, handleAddToCart }) => {
     const cartFill = product.inCart ? 'green' : '';
     return (
         <div className={styles.product}>
-            <span style={product.inCart ? { textDecoration: 'line-through' } : null}>{product.name}</span>
             <span className={styles.buttons}>
                 <Cart fill={cartFill} onClick={() => handleAddToCart(product._id)} />
-                <span className={styles.delete} onClick={() => handleDelete(product._id)}>
-                    <img src={Delete} alt="delete" />
-                </span>
+                <span style={product.inCart ? { color: 'green' } : null}>{product.name}</span>
+            </span>
+            <span className={styles.delete} onClick={() => handleDelete(product._id)}>
+                <img src={Delete} alt="delete" />
             </span>
         </div>
     );

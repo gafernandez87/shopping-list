@@ -12,7 +12,7 @@ const Landing = () => {
   const history = useHistory();
 
   const createRoom = () => {
-    apiCall("http://localhost:4001/api/rooms", {
+    apiCall("/api/rooms", {
       method: "POST",
       body: JSON.stringify({ roomName: roomName })
     }).then(res => {
@@ -22,10 +22,9 @@ const Landing = () => {
 
   return (
     <div className={styles.landing}>
-      <h2 className={styles.title}>Shopping time!</h2>
       <section className={styles.newRoom}>
-        <p className={styles.subtitle}>Crear listado de compras</p>
-        <label className={styles.roomName}>NOMBRE</label>
+        <h2 className={styles.title}>Shopping time!</h2>
+        <label className={styles.roomName}>Ingresa el nombre de la sala</label>
         <input
           type="text"
           className={styles.input}
@@ -34,7 +33,7 @@ const Landing = () => {
           onChange={(e) => setRoomName(e.target.value)}
         />
         <button className={styles.button} onClick={createRoom}>
-          CREAR
+          CREAR SALA
         </button>
       </section>
     </div>

@@ -7,11 +7,12 @@ import styles from "./Header.module.css";
 import BackIcon from './back.png'
 
 
-const Header = ({ title, handleBack }) => {
+const Header = ({ title, counts, handleBack }) => {
     return (
         <div className={styles.header}>
             <img src={BackIcon} alt="back" onClick={handleBack} />
             <span>{title}</span>
+            <span className={styles.count}>{counts}</span>
         </div>
     );
 };

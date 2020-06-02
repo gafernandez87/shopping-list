@@ -3,6 +3,7 @@
     height: auto;
     min-height: 300px;
     overflow-y: auto;
+    margin-top: 20px;
 }
 
 .product {
@@ -20,6 +21,7 @@
     display: inline-block;
     padding: 5px;
     border-radius: 25%;
+    margin-left: 20px;
     background-color: red;
     cursor: pointer;
 }
@@ -28,7 +30,7 @@
 }
 
 .buttons {
-    width: 10%;
+    width: 30%;
     display: flex;
     flex-flow: wrap row;
     align-items: center;
