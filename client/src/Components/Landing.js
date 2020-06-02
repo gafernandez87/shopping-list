@@ -12,7 +12,7 @@ const Landing = () => {
   const history = useHistory();
 
   const createRoom = () => {
-    apiCall("/api/rooms", {
+    apiCall("http://localhost:4001/api/rooms", {
       method: "POST",
       body: JSON.stringify({ roomName: roomName })
     }).then(res => {

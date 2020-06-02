@@ -38,23 +38,28 @@ db.once('open', () => {
 
 io.on('connection', (socket) => {
   const { roomId } = socket.handshake.query;
+  console.log("connection")
   if (roomId) {
-    RoomController.getRoom(roomId).then(room => socket.emit('room', room))
+    RoomController.getRoom(roomId).then(room => {
+      socket.room = room._id;
+      socket.join(room._id);
+      socket.emit('room', room)
+    });
   }
 
   socket.on("addProduct", params => {
     RoomController.addProduct(params.roomId, params.product)
-      .then(room => io.emit("room", room));
+      .then(room => io.sockets.in(socket.room).emit("room", room));
   });
 
   socket.on("deleteProduct", params => {
     RoomController.deleteProduct(params.roomId, params.product)
-      .then(room => io.emit("room", room));
+      .then(room => io.sockets.in(socket.room).emit("room", room));
   });
 
   socket.on("toggleInCart", params => {
     RoomController.toggleInCart(params.roomId, params.product)
-      .then(room => io.emit("room", room));
+      .then(room => io.sockets.in(socket.room).emit("room", room));
   });
 
 });

@@ -23,7 +23,7 @@ const Room = () => {
   const history = useHistory();
 
   useEffect(() => {
-    socket = socketIOClient({
+    socket = socketIOClient("http://localhost:4001", {
       query: { roomId: roomId },
     });
 
